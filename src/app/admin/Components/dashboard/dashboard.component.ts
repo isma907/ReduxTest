@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store'
 import { Observable } from 'rxjs'
-import { Store } from '@ngrx/store'
-import { State } from '../../_reducers/dashboard.reducer'
-import * as dashboardActions from '../../_actions/dashboard.actions'
 
+import * as searchActions from '../../_actions/search.actions'
+import * as searchReducer from '../../_reducers/search.reducer'
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -11,13 +11,19 @@ import * as dashboardActions from '../../_actions/dashboard.actions'
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private store: Store<{ dashboard: any[] }>) { }
+  constructor(private store: Store<{ search: any }>) { }
+
+  search: string
+  items$: Observable<any>
 
   ngOnInit() {
-    this.store.dispatch(dashboardActions.loadDashboards())
+
+    // this.items$ = this.store.pipe(select(searchReducer.getMovies));
+    this.items$ = this.store.pipe(select(searchReducer.getMovies));
   }
 
-  books$: Observable<any[]> = this.store.select(state => state.dashboard);
-
+  buscar() {
+    this.store.dispatch(searchActions.search({ query: this.search }))
+  }
 
 }

@@ -1,5 +1,12 @@
 <p>dashboard works!</p>
 
-{{dashboard$ | async}}
 
-<button (click)="test()"></button>
+<div class="card">
+    <div class="list-group">
+        <div class="list-item" *ngFor="let item of items$ | async">
+            item.volumeInfo.title
+        </div>
+    </div>
+</div>
+
+<button (click)="buscar()"></button>

@@ -1,4 +1,14 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import {
+  Action,
+  ActionReducer,
+  ActionReducerMap,
+  createFeatureSelector,
+  createReducer,
+  createSelector,
+  MetaReducer,
+  on
+} from '@ngrx/store';
+
 import * as searchActions from '../_actions/search.actions'
 
 export const searchFeatureKey = 'search';
@@ -12,6 +22,9 @@ export const initialState: State = {
   query: "",
   movies: []
 };
+
+
+export const getMovies = (state: State) => state.movies;
 
 const searchReducer = createReducer(
   initialState,
