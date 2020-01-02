@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,7 @@ import { reducer } from './_store/reducers/app.reducer'
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     StoreModule.forRoot({
       appReducer: reducer
     }),

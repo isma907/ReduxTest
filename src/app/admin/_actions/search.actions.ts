@@ -1,15 +1,16 @@
 import { createAction, props } from '@ngrx/store';
 
-export const loadSearchs = createAction(
-  '[Search] Load Searchs'
+export const search = createAction(
+  '[Search] Load Searchs',
+  props<{ query: string }>()
 );
 
-export const loadSearchsSuccess = createAction(
+export const searchSuccess = createAction(
   '[Search] Load Searchs Success',
   props<{ data: any }>()
 );
 
-export const loadSearchsFailure = createAction(
+export const searchFailure = createAction(
   '[Search] Load Searchs Failure',
   props<{ error: any }>()
 );

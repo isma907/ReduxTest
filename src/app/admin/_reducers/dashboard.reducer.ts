@@ -1,4 +1,5 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on, Action } from '@ngrx/store'
+import * as dashboardActions from '../_actions/dashboard.actions'
 
 
 export const dashboardFeatureKey = 'dashboard';
@@ -13,7 +14,8 @@ export const initialState: State = {
 
 const dashboardReducer = createReducer(
   initialState,
-
+  on(dashboardActions.loadDashboards, state => ({ ...state, loading: true })),
+  on(dashboardActions.loadDashboardsSuccess, (state) => ({ ...state, loading: false }))
 );
 
 export function reducer(state: State | undefined, action: Action) {
