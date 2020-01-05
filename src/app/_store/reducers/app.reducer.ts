@@ -13,7 +13,6 @@ export const initialState: State = {
 
 const appReducer = createReducer(
   initialState,
-
 );
 
 export function reducer(state: State | undefined, action: Action) {

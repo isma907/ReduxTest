@@ -1,10 +1,19 @@
 <p>dashboard works!</p>
 
 
-<div class="card">
-    <div class="list-group">
-        <div class="list-item" *ngFor="let item of items$ | async">
-            item.volumeInfo.title
+
+<div class="card mb-3" *ngFor="let item of items$ | async">
+    <div class="row no-gutters">
+        <div class="col-md-3" style="height: 220px;overflow:hidden">
+            <img src="{{item.volumeInfo?.imageLinks.thumbnail}}"  style="width:100%" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{item.volumeInfo.title}}</h5>
+                <p class="card-text" [innerHTML]="item.searchInfo?.textSnippet">
+                </p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
         </div>
     </div>
 </div>

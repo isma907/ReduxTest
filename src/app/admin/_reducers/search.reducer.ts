@@ -15,16 +15,15 @@ export const searchFeatureKey = 'search';
 
 export interface State {
   query: string
-  movies: any[]
+  movies: any[],
+  loading: boolean
 }
 
 export const initialState: State = {
   query: "",
-  movies: []
+  movies: [],
+  loading: false
 };
-
-
-export const getMovies = (state: State) => state.movies;
 
 const searchReducer = createReducer(
   initialState,

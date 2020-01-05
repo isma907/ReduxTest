@@ -13,7 +13,7 @@ export class MovieEffects {
       ofType(searchActions.search),
       switchMap((action: any) =>
         this.moviesService.getData(action.query).pipe(
-          map(movies => searchActions.searchSuccess({ data: movies.items })),
+          map((movies: any) => searchActions.searchSuccess({ data: movies.items })),
           catchError(message => of(searchActions.searchFailure(message))
           )
         )

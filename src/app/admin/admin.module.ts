@@ -12,10 +12,15 @@ import { reducer } from './_reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { MovieEffects } from './_effects/movies.effects';
 import { TablesComponent } from './components/tables/tables.component';
-import { CardsComponent } from './components/cards/cards.component'
+import { CardsComponent } from './components/cards/cards.component';
+import { ColorsComponent } from './components/colors/colors.component';
+import { BordersComponent } from './components/borders/borders.component';
+import { AnimationsComponent } from './components/animations/animations.component';
+import { OthersComponent } from './components/others/others.component';
+import { ButtonsComponent } from './components/buttons/buttons.component'
 
 @NgModule({
-  declarations: [LayoutComponent, DashboardComponent, TablesComponent, CardsComponent],
+  declarations: [LayoutComponent, DashboardComponent, TablesComponent, CardsComponent, ColorsComponent, BordersComponent, AnimationsComponent, OthersComponent, ButtonsComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
