@@ -12,16 +12,16 @@ import * as searchSelectors from '../../_selectors/search.selectors'
 export class LayoutComponent implements OnInit {
 
     constructor(private store: Store<any>) { }
+    search$: Observable<any>;
 
     ngOnInit() {
-
+        this.search$ = this.store.select(searchSelectors.getFilter)
     }
-    search: string
     loading$ = this.store.select(searchSelectors.getLoading)
 
 
     buscar() {
-        this.store.dispatch(searchActions.search({ query: this.search }))
+        this.store.dispatch(searchActions.search({ query: this.search$ }))
     }
 
 }

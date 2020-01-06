@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
-import { of, Observable } from 'rxjs';
-import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { MoviesService } from '../_services/movies.service';
 import * as searchActions from '../_actions/search.actions'
 
@@ -20,6 +20,29 @@ export class MovieEffects {
       )
     )
   );
+
+
+  removeItems$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(searchActions.deleteItem),
+      switchMap(res => [
+        searchActions.deleteItemSuccess(),
+      ]),
+      catchError(error => searchActions.searchFailure)
+    )
+  );
+
+
+  removeSuccess$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(searchActions.deleteItemSuccess),
+      switchMap(res => [
+        searchActions.search({ query: "Titanic" }),
+      ]),
+    )
+  )
+
+
 
   constructor(
     private actions$: Actions,

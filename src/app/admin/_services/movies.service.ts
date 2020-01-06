@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs'
+import { timeout, catchError, map, delay } from 'rxjs/operators';
 
 
 @Injectable({
@@ -18,4 +20,14 @@ export class MoviesService {
       }
     })
   }
+
+  deleteMovie(movie): Observable<any> {
+    return of(movie).pipe(
+      map(da => {
+        console.log("ENTRO")
+      }),
+      delay(2000))
+  }
+
+
 }
